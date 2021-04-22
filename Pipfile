@@ -1,0 +1,24 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+python-liquid = {extras = ["autoescape"], version = "*"}
+django = "*"
+django-liquid = {editable = true, path = "."}
+
+[dev-packages]
+black = "*"
+pylint = "*"
+flake8 = "*"
+coverage = "*"
+tox = "*"
+sphinx = "*"
+rstcheck = "*"
+
+[requires]
+python_version = "3.9"
+
+[pipenv]
+allow_prereleases = true
