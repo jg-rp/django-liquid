@@ -28,4 +28,8 @@ setuptools.setup(
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: Implementation :: CPython",
     ],
+    project_urls={
+        "Issue Tracker": "https://github.com/jg-rp/django-liquid/issues",
+        "Source Code": "https://github.com/jg-rp/django-liquid",
+    },
 )
