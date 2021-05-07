@@ -6,7 +6,7 @@ with open("README.rst", "r") as fd:
 
 setuptools.setup(
     name="django-liquid",
-    version="0.1.0",
+    version="0.1.1",
     description="A Django template backend for Liquid.",
     long_description=long_description,
     long_description_content_type="text/x-rst",

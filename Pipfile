@@ -16,6 +16,7 @@ coverage = "*"
 tox = "*"
 sphinx = "*"
 rstcheck = "*"
+twine = "*"
 
 [requires]
 python_version = "3.9"

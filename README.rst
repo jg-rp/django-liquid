@@ -96,6 +96,43 @@ can force Django to use a specific template engine with the ``using`` argument.
         context = {"greeting": "hello"}
         return render(request, 'myapp/index.html', context, using='liquid')
 
+Environment Factory
+-------------------
+
+.. _python-liquid-extra: https://github.com/jg-rp/liquid-extra
+
+You can configure your ``liquid.Environment`` with additional tags or filters by setting
+the ``environment`` template backend option to the name of an ``Environment`` factory
+function. Lets say you want to register the ``json`` filter from `python-liquid-extra`_.
+If the following is saved as ``myproject/liquid.py``
+
+.. code-block:: python
+
+    from liquid import Environment
+    from liquid_extra import filters
+    
+    def environment(**options):
+        env = Environment(**options)
+        env.add_filter("json", filters.JSON())
+        # Register more filters or tags here.
+        return env
+
+Then tell the django template backend to use your environment factory function like
+this.
+
+.. code-block:: python
+
+    # settings.py
+    TEMPLATES = [
+        {
+            'BACKEND': 'django_liquid.liquid.Liquid',
+            'DIRS': [],
+            'APP_DIRS': True,
+            'OPTIONS': {
+              'environment': 'myproject.liquid.environment'
+            },
+        },
+    ]
 
 Contributing
 ------------
