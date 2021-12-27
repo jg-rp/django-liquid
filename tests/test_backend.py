@@ -14,7 +14,10 @@ from django.middleware.csrf import CsrfViewMiddleware
 try:
     from django.middleware.csrf import _compare_masked_tokens as equivalent_tokens
 except ImportError:
-    from django.middleware.csrf import _compare_salted_tokens as equivalent_tokens
+    try:
+        from django.middleware.csrf import _compare_salted_tokens as equivalent_tokens
+    except ImportError:
+        from django.middleware.csrf import _does_token_match as equivalent_tokens
 
 from django.middleware.csrf import get_token
 
