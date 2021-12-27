@@ -1,3 +1,4 @@
+"""A Liquid template engine for Django."""
 from pathlib import Path
 
 import liquid
@@ -14,7 +15,6 @@ from django.template.backends.base import BaseEngine
 
 
 class Liquid(BaseEngine):
-
     app_dirname = "liquid"
 
     def __init__(self, params):
