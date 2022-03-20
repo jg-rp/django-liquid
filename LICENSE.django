@@ -1,5 +1,5 @@
 django-liquid is a modified version of the jinja2 backend and test cases from
-the Django project. Django's license is included bellow.
+the Django project. Django's license is included below.
 
 -------------------------------------------------------------------------------
 
