@@ -7,19 +7,19 @@ Django-Liquid
 A Django template backend for `Liquid <https://github.com/jg-rp/liquid>`_. Render Liquid 
 templates in your Django apps.
 
-.. image:: https://img.shields.io/pypi/v/django-liquid.svg
+.. image:: https://img.shields.io/pypi/v/django-liquid.svg?style=flat-square
     :target: https://pypi.org/project/django-liquid/
     :alt: Version
 
-.. image:: https://github.com/jg-rp/django-liquid/actions/workflows/tests.yaml/badge.svg
+.. image:: https://github.com/jg-rp/django-liquid/actions/workflows/tests.yaml/badge.svg?style=flat-square
     :target: https://github.com/jg-rp/django-liquid/tree/main/tests
     :alt: Tests
 
-.. image:: https://img.shields.io/pypi/l/django-liquid.svg
+.. image:: https://img.shields.io/pypi/l/django-liquid.svg?style=flat-square
     :target: https://pypi.org/project/django-liquid/
     :alt: Licence
 
-.. image:: https://img.shields.io/pypi/pyversions/django-liquid.svg
+.. image:: https://img.shields.io/pypi/pyversions/django-liquid.svg?style=flat-square
     :target: https://pypi.org/project/django-liquid/
     :alt: Python versions
 
