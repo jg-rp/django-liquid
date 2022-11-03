@@ -1,17 +1,16 @@
+# type: ignore
 """A Liquid template engine for Django."""
+
 from pathlib import Path
 
-import liquid
-
 from django.conf import settings
-
 from django.template import TemplateDoesNotExist
 from django.template import TemplateSyntaxError
-
 from django.utils.functional import cached_property
 from django.utils.module_loading import import_string
-
 from django.template.backends.base import BaseEngine
+
+import liquid
 
 
 class Liquid(BaseEngine):
@@ -36,7 +35,7 @@ class Liquid(BaseEngine):
 
         self.env: liquid.Environment = environment_cls(**options)
 
-    def from_string(self, template_code):
+    def from_string(self, template_code: str):
         return Template(self.env.from_string(template_code), self)
 
     def get_template(self, template_name):

@@ -1,3 +1,4 @@
+# type: ignore
 import re
 
 from pathlib import Path
@@ -10,15 +11,8 @@ from django.forms import CharField, Form, Media
 from django.http import HttpRequest, HttpResponse
 
 from django.middleware.csrf import CsrfViewMiddleware
-
-try:
-    from django.middleware.csrf import _compare_masked_tokens as equivalent_tokens
-except ImportError:
-    try:
-        from django.middleware.csrf import _compare_salted_tokens as equivalent_tokens
-    except ImportError:
-        from django.middleware.csrf import _does_token_match as equivalent_tokens
-
+from django.middleware.csrf import CSRF_TOKEN_LENGTH
+from django.middleware.csrf import _unmask_cipher_token
 from django.middleware.csrf import get_token
 
 from django.test import SimpleTestCase
@@ -107,6 +101,12 @@ class LiquidTests(SimpleTestCase):
 
         self.assertHTMLEqual(content, expected)
 
+    def check_tokens_equivalent(self, token1, token2):
+        self.assertEqual(len(token1), CSRF_TOKEN_LENGTH)
+        self.assertEqual(len(token2), CSRF_TOKEN_LENGTH)
+        token1, token2 = map(_unmask_cipher_token, (token1, token2))
+        self.assertEqual(token1, token2)
+
     def test_csrf_token(self):
         request = HttpRequest()
         CsrfViewMiddleware(lambda req: HttpResponse()).process_view(
@@ -121,7 +121,7 @@ class LiquidTests(SimpleTestCase):
             expected.replace('"', "'"), content
         )
         self.assertTrue(match, "hidden csrftoken field not found in output")
-        self.assertTrue(equivalent_tokens(match[1], get_token(request)))
+        self.check_tokens_equivalent(match[1], get_token(request))
 
     def test_origin(self):
         template = self.engine.get_template("template_backends/hello.html")

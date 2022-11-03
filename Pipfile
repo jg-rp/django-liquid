@@ -17,6 +17,10 @@ tox = "*"
 sphinx = "*"
 rstcheck = "*"
 twine = "*"
+mypy = "*"
+pytest = "*"
+build = "*"
+django-stubs = {extras = ["compatible-mypy"], version = "*"}
 
 [requires]
 python_version = "3.9"
