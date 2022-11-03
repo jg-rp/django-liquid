@@ -11,7 +11,7 @@ templates in your Django apps.
     :target: https://pypi.org/project/django-liquid/
     :alt: Version
 
-.. image:: https://github.com/jg-rp/django-liquid/actions/workflows/tests.yaml/badge.svg?style=flat-square
+.. image:: https://img.shields.io/github/workflow/status/jg-rp/django-liquid/Tests/main?label=tests&style=flat-square
     :target: https://github.com/jg-rp/django-liquid/tree/main/tests
     :alt: Tests
 
