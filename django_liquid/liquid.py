@@ -3,14 +3,13 @@
 
 from pathlib import Path
 
+import liquid
 from django.conf import settings
 from django.template import TemplateDoesNotExist
 from django.template import TemplateSyntaxError
+from django.template.backends.base import BaseEngine
 from django.utils.functional import cached_property
 from django.utils.module_loading import import_string
-from django.template.backends.base import BaseEngine
-
-import liquid
 
 
 class Liquid(BaseEngine):
@@ -57,19 +56,17 @@ class Template:
     def __init__(self, template, backend):
         self.template = template
         self.backend = backend
-
-        if template.path:
-            name = str(template.path)
-        else:
-            name = "<template>"
-
+        name = str(template.path) if template.path else "<template>"
         self.origin = Origin(
             name=name,
             template_name=template.name or None,
         )
 
     def render(self, context=None, request=None):
-        from django.template.backends.utils import csrf_input_lazy, csrf_token_lazy
+        from django.template.backends.utils import (  # noqa: I001
+            csrf_input_lazy,
+            csrf_token_lazy,
+        )
 
         if context is None:
             context = {}
@@ -90,9 +87,7 @@ class Template:
 
 
 class Origin:
-    """A container to hold debug information as described in the template API
-    documentation.
-    """
+    """Debug information container as described in the template API documentation."""
 
     def __init__(self, name, template_name):
         self.name = name

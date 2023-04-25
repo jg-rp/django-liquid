@@ -1,6 +1,13 @@
 Django Liquid Change Log
 ========================
 
+Version 1.1.1 (unreleased)
+--------------------------
+
+- Test against Django 4.2
+- Configure with pyproject.toml
+- Test and build with Hatch
+
 Version 1.1.0
 -------------
 

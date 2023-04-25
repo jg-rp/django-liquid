@@ -1,3 +1,0 @@
-include README.rst LICENSE LICENSE.django Pipfile Pipfile.lock
-graft tests
-global-exclude *.py[cod]
