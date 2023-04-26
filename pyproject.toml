@@ -1,3 +1,185 @@
 [build-system]
-requires = ["setuptools", "wheel"]
-build-backend = "setuptools.build_meta:__legacy__"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "django-liquid"
+dynamic = ["version"]
+description = "A Django template backend for Liquid."
+readme = "README.md"
+license = "BSD-3-Clause"
+requires-python = ">=3.7"
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: BSD License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+dependencies = ["django>=3.2", "python-liquid[autoescape]>=0.7.4"]
+
+[project.urls]
+"Change Log" = "https://github.com/jg-rp/django-liquid/blob/main/CHANGES.md"
+Documentation = "https://jg-rp.github.io/liquid/guides/django-liquid"
+Homepage = "https://github.com/jg-rp/django-liquid"
+"Issue Tracker" = "https://github.com/jg-rp/django-liquid/issues"
+"Source Code" = "https://github.com/jg-rp/django-liquid"
+
+[tool.hatch.version]
+path = "django_liquid/__init__.py"
+
+[tool.hatch.build.targets.sdist]
+packages = ["django_liquid"]
+exclude = ["/**/.mypy_cache/"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["django_liquid"]
+exclude = ["/**/.mypy_cache/"]
+
+[tool.hatch.envs.default]
+dependencies = [
+    "black",
+    "mypy",
+    "twine",
+    "ruff",
+    "mock",
+    "types-python-dateutil",
+    "django-stubs[compatible-mypy]",
+]
+
+[tool.hatch.envs.default.scripts]
+test = "python runtests.py"
+lint = "ruff check ."
+typing = "mypy"
+
+[[tool.hatch.envs.test.matrix]]
+python = ["38", "39", "310", "311"]
+django = ["32", "42"]
+
+[tool.hatch.envs.test.overrides]
+matrix.django.dependencies = [
+    { value = "django==3.2", if = [
+        "32",
+    ] },
+    { value = "django==4.2", if = [
+        "42",
+    ] },
+]
+
+[tool.hatch.envs.test.scripts]
+test = "python runtests.py"
+
+[tool.coverage.run]
+branch = true
+parallel = true
+omit = []
+
+[tool.coverage.report]
+exclude_lines = ["no cov", "if __name__ == .__main__.:", "if TYPE_CHECKING:"]
+
+[tool.mypy]
+files = "django_liquid"
+python_version = "3.10"
+disallow_subclassing_any = true
+disallow_untyped_calls = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+no_implicit_optional = true
+local_partial_types = true
+no_implicit_reexport = true
+strict = true
+warn_redundant_casts = true
+warn_unused_configs = true
+warn_unused_ignores = false
+warn_return_any = true
+warn_unreachable = true
+
+[tool.ruff]
+select = [
+    "A",
+    "ARG",
+    "B",
+    "BLE",
+    "C4",
+    "E",
+    "F",
+    "I",
+    "ICN",
+    "ISC",
+    "N",
+    "PIE",
+    "PL",
+    "PT",
+    "Q",
+    "RET",
+    "RSE",
+    "S",
+    "SIM",
+    "SLF",
+    "T10",
+    "T20",
+    "TCH",
+    "YTT",
+]
+ignore = [
+    "S105",
+    "S101",
+    "D107",
+    "D105",
+    "PLR0913",
+    "D401",
+    "N818",
+    "PT009",
+    "B905",
+]
+
+fixable = ["I", "SIM", "D202"]
+unfixable = []
+
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+]
+
+# Same as Black.
+line-length = 88
+
+# Allow unused variables when underscore-prefixed.
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+# Assume Python 3.10.
+target-version = "py310"
+
+[tool.ruff.isort]
+force-single-line = true
+
+[tool.ruff.pydocstyle]
+convention = "google"
+
+
+[tool.ruff.per-file-ignores]
+"django_liquid/__init__.py" = ["D104", "I001"]

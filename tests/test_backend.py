@@ -1,29 +1,27 @@
 # type: ignore
 import re
-
 from pathlib import Path
 from unittest import mock
 
-from django.template import TemplateSyntaxError
-from django.template import TemplateDoesNotExist
-
-from django.forms import CharField, Form, Media
-from django.http import HttpRequest, HttpResponse
-
-from django.middleware.csrf import CsrfViewMiddleware
+import liquid
+from django.forms import CharField
+from django.forms import Form
+from django.forms import Media
+from django.http import HttpRequest
+from django.http import HttpResponse
 from django.middleware.csrf import CSRF_TOKEN_LENGTH
+from django.middleware.csrf import CsrfViewMiddleware
 from django.middleware.csrf import _unmask_cipher_token
 from django.middleware.csrf import get_token
-
-from django.test import SimpleTestCase
+from django.template import TemplateDoesNotExist
+from django.template import TemplateSyntaxError
 from django.test import RequestFactory
+from django.test import SimpleTestCase
 
-import liquid
 from django_liquid.liquid import Liquid
 
 
 class LiquidTests(SimpleTestCase):
-
     engine_class = Liquid
     backend_name = "liquid"
     options = {
@@ -109,8 +107,8 @@ class LiquidTests(SimpleTestCase):
 
     def test_csrf_token(self):
         request = HttpRequest()
-        CsrfViewMiddleware(lambda req: HttpResponse()).process_view(
-            request, lambda r: None, (), {}
+        CsrfViewMiddleware(lambda req: HttpResponse()).process_view(  # noqa: ARG005
+            request, lambda r: None, (), {}  # noqa: ARG005
         )
 
         template = self.engine.get_template("template_backends/csrf.html")
@@ -232,7 +230,7 @@ class LiquidTests(SimpleTestCase):
 
     def test_template_render_error_nonexistent_source(self):
         template = self.engine.get_template("template_backends/hello.html")
-        with mock.patch(
+        with mock.patch(  # noqa: SIM117
             "liquid.template.BoundTemplate.render",
             side_effect=liquid.exceptions.LiquidSyntaxError(
                 "", linenum=1, filename="nonexistent.html"
