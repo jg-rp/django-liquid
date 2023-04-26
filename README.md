@@ -5,11 +5,11 @@ A Django template backend for <a href="https://github.com/jg-rp/liquid">Liquid</
 </p>
 
 <p align="center">
-  <a href="https://github.com/jg-rp/liquid/blob/main/LICENSE">
+  <a href="https://github.com/jg-rp/django-liquid/blob/main/LICENSE">
     <img src="https://img.shields.io/pypi/l/django-liquid.svg?style=flat-square" alt="License">
   </a>
-  <a href="https://github.com/jg-rp/liquid/actions/workflows/tests.yaml">
-    <img src="https://img.shields.io/github/actions/workflow/status/jg-rp/liquid/tests.yaml?branch=main&label=tests&style=flat-square" alt="Tests">
+  <a href="https://github.com/jg-rp/django-liquid/actions/workflows/tests.yaml">
+    <img src="https://img.shields.io/github/actions/workflow/status/jg-rp/django-liquid/tests.yaml?branch=main&label=tests&style=flat-square" alt="Tests">
   </a>
   <br>
   <a href="https://pypi.org/project/django-liquid/">
@@ -27,13 +27,13 @@ A Django template backend for <a href="https://github.com/jg-rp/liquid">Liquid</
 Install Django Liquid using [pip](https://pip.pypa.io/en/stable/getting-started/):
 
 ```console
-pip install python-liquid
+pip install django-liquid
 ```
 
 Or [Pipenv](https://pipenv.pypa.io/en/latest/):
 
 ```console
-pipenv install -u python-liquid
+pipenv install -u django-liquid
 ```
 
 ## Links
