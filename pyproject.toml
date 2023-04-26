@@ -6,7 +6,7 @@ build-backend = "hatchling.build"
 name = "django-liquid"
 dynamic = ["version"]
 description = "A Django template backend for Liquid."
-readme = "README.rst"
+readme = "README.md"
 license = "BSD-3-Clause"
 requires-python = ">=3.7"
 classifiers = [
@@ -24,7 +24,7 @@ classifiers = [
 dependencies = ["django>=3.2", "python-liquid[autoescape]>=0.7.4"]
 
 [project.urls]
-"Change Log" = "https://github.com/jg-rp/django-liquid/blob/main/CHANGES.rst"
+"Change Log" = "https://github.com/jg-rp/django-liquid/blob/main/CHANGES.md"
 Documentation = "https://jg-rp.github.io/liquid/guides/django-liquid"
 Homepage = "https://github.com/jg-rp/django-liquid"
 "Issue Tracker" = "https://github.com/jg-rp/django-liquid/issues"
