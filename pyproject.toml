@@ -20,6 +20,7 @@ classifiers = [
     "Programming Language :: Python :: Implementation :: CPython",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
 ]
 dependencies = ["django>=3.2", "python-liquid[autoescape]>=0.7.4"]
 
@@ -58,7 +59,7 @@ lint = "ruff check ."
 typing = "mypy"
 
 [[tool.hatch.envs.test.matrix]]
-python = ["38", "39", "310", "311"]
+python = ["38", "39", "310", "311", "312"]
 django = ["32", "42"]
 
 [tool.hatch.envs.test.overrides]
