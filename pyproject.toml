@@ -60,7 +60,7 @@ typing = "mypy"
 
 [[tool.hatch.envs.test.matrix]]
 python = ["38", "39", "310", "311", "312"]
-django = ["32", "42"]
+django = ["32", "42", "5"]
 
 [tool.hatch.envs.test.overrides]
 matrix.django.dependencies = [
@@ -69,6 +69,9 @@ matrix.django.dependencies = [
     ] },
     { value = "django==4.2", if = [
         "42",
+    ] },
+    { value = "django==5", if = [
+        "5",
     ] },
 ]
 
