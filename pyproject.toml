@@ -59,7 +59,7 @@ lint = "ruff check ."
 typing = "mypy"
 
 [[tool.hatch.envs.test.matrix]]
-python = ["38", "39", "310", "311", "312"]
+python = ["38", "39", "310", "311", "312", "313"]
 django = ["32", "42", "5"]
 
 [tool.hatch.envs.test.overrides]
