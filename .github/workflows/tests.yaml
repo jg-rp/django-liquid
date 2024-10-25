@@ -9,8 +9,8 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - { python: "3.13.0-rc.3", os: ubuntu-latest, env: py313-5 }
-          - { python: "3.13.0-rc.3", os: ubuntu-latest, env: py313-42 }
+          - { python: "3.13", os: ubuntu-latest, env: py313-5 }
+          - { python: "3.13", os: ubuntu-latest, env: py313-42 }
           - { python: "3.12", os: ubuntu-latest, env: py312-5 }
           - { python: "3.12", os: ubuntu-latest, env: py312-42 }
           - { python: "3.11", os: ubuntu-latest, env: py311-42 }
